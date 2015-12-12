@@ -7,8 +7,8 @@ module Gnt
       @index = load
     end
 
-    def index!(parsed_corpus)
-      parsed_corpus.reduce(index) { |h, word| h[word] += 1; h }
+    def index!(corpus)
+      Parser.parse(corpus).reduce(index) { |h, word| h[word] += 1; h }
     end
 
     def save!
@@ -30,7 +30,7 @@ module Gnt
 
     def load
       JSON.parse(File.read("#{Constants::INDEX_DIR}/#{filename}"))
-    rescue Errno::ENOENT => err
+    rescue Errno::ENOENT, JSON::ParserError
       Hash.new(0)
     end
   end

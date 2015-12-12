@@ -5,7 +5,7 @@ RSpec.describe Gnt::Index do
 
   describe '#index!' do
     it 'creates an index' do
-      hotdog.index!(['hi', 'there', 'hi'])
+      hotdog.index!('hi there. hi')
       expect(hotdog.index).to eq({'hi' => 2, 'there' => 1})
     end
 
@@ -20,7 +20,7 @@ RSpec.describe Gnt::Index do
       expect(File).to receive(:read).with("indexes/hotdogs-index.json") {
         { 'hi' => 100 }.to_json
       }
-      hotdog.index!(['hi'])
+      hotdog.index!('hi')
       expect(hotdog.index).to eq({'hi' => 101})
     end
   end
@@ -34,9 +34,9 @@ RSpec.describe Gnt::Index do
 
   describe '#size' do
     it 'returns the total of all values' do
-      corpus = ['hi', 'there', 'hi', 'later']
+      corpus = 'hi there hi later'
       hotdog.index!(corpus)
-      expect(hotdog.size).to eq(corpus.size)
+      expect(hotdog.size).to eq(4)
     end
   end
 end

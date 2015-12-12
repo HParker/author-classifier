@@ -28,14 +28,14 @@ module Gnt
       aggregates = Hash[classifications.map { |classification|
                           [
                            classification.classification,
-                           Rational(classification.size, total)
+                           Math.log(Rational(classification.size, total))
                           ]
                         }
                        ]
 
       parsed_phrase.each do |token|
         classifications.each do |classification|
-          aggregates[classification.classification] *= Rational(classification.index.fetch(token, 1), classification.size + 1)
+          aggregates[classification.classification] += Math.log(Rational(classification.index.fetch(token, 0.1), classification.size + 1))
         end
       end
       aggregates

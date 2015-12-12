@@ -1,6 +1,11 @@
 # Gnt
 
-TODO: Write a gem description
+Gin n' Tonic :cocktail:
+
+or General natural (language) typer
+
+This library allows you to give examples of types of text and find the
+examples that fit that type most closely.
 
 ## Installation
 
@@ -20,7 +25,8 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+First you are going to want to define our types of text.
+
 
 ## Contributing
 
