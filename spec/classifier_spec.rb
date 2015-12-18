@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe Gnt::Classifier do
-  describe "#author_of" do
+  describe "#identify" do
     let(:greetings) {
       i_ = Gnt::Index.new("greetings")
       i_.index!('hi hello there what up.')
@@ -17,8 +17,19 @@ RSpec.describe Gnt::Classifier do
     let(:classifier) { Gnt::Classifier.new([greetings, fairwells]) }
 
     it "returns the more likely match" do
-      result = classifier.author_of('why hello')
-      expect(result[0]).to eq("greetings")
+      result = classifier.identify('why hello')
+      expect(result.classification).to eq("greetings")
+    end
+
+    it "can take a custom parser" do
+      class CustomParser
+        def self.parse(text)
+          ["foo", "foo"].each_cons(1)
+        end
+      end
+
+      result = classifier.identify('foo', parser: CustomParser)
+      expect((result.confidence - 0.5).abs).to be < 0.01
     end
   end
 end

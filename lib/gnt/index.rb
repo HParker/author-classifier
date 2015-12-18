@@ -7,8 +7,8 @@ module Gnt
       @index = load
     end
 
-    def index!(corpus)
-      Parser.parse(corpus).reduce(index) { |h, word| h[word] += 1; h }
+    def index!(corpus, parser: Parser)
+      parser.parse(corpus).reduce(index) { |h, word| h[word] += 1; h }
     end
 
     def save!
