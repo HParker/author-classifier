@@ -1,4 +1,4 @@
-require "bundler/gem_tasks"
+require 'bundler/gem_tasks'
 require 'gnt'
 
 begin
@@ -6,7 +6,7 @@ begin
 
   RSpec::Core::RakeTask.new(:spec)
 
-  task :default => :spec
+  task default: :spec
 rescue LoadError
   # no rspec available
 end

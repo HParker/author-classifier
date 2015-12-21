@@ -1,10 +1,18 @@
 module Gnt
+  # Gnt::Guess
   class Guess
-    attr_reader :classification, :score, :confidence
-    def initialize(classification, score, confidence)
-      @classification = classification
+    attr_reader :name, :score, :confidence
+
+    def initialize(name, score, total_probability)
+      @name = name
       @score = score
-      @confidence = confidence
+      @confidence = score.to_f / total_probability
+    end
+
+    protected
+
+    def <=>(other)
+      score <=> other.score
     end
   end
 end

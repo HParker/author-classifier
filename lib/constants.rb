@@ -1,3 +1,5 @@
+# provide constants used in the in Gnt internally.
 module Constants
-  INDEX_DIR = "indexes"
+  # Defaults to +./indexes+
+  INDEX_DIR = ENV['GNT_INDEX_DIR'] || 'indexes'
 end

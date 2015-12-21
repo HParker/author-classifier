@@ -1,5 +1,5 @@
 require 'gnt'
 
 def hi
-  puts "hello"
+  puts 'hello'
 end

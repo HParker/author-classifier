@@ -25,6 +25,14 @@ Or install it yourself as:
 
 ## Usage
 
+### Constants
+
+When using the default file saving index persistence, you can set the `GNT_INDEX_DIR` environment variable.
+the default is `indexes`
+
+
+
+
 First you are going to want to define our types of text.
 
 
